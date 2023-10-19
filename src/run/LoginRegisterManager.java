@@ -25,7 +25,7 @@ public class LoginRegisterManager {
                 case 3:
                     System.out.println("\u001B[36m----------End----------");
                     System.exit(0);
-                case 4:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
         } while (true);

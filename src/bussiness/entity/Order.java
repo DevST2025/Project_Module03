@@ -1,9 +1,10 @@
 package bussiness.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
     private long orderId;
     private long userId;
     private String fullName;

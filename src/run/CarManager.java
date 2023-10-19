@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CarManager {
     public static void showCarManager() {
-        System.out.println("\u001B[34m----------Car manager----------");
         do {
             Menu.carManager();
             System.out.print("\u001B[34mEnter your choice: ");
@@ -32,7 +31,7 @@ public class CarManager {
                     break;
                 case 6:
                     break;
-                case 7:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
             if (choice == 6) {
@@ -49,12 +48,12 @@ public class CarManager {
         }
         System.out.println("----------Car list----------");
         for (Car car : listCars) {
-            System.out.printf("ID: %d - Car's name: %s - Catalog: %s\n" +
-                            "Descriptions: %s\n" +
-                            "Price: %.2f - Quantity in stock: %d - Created At: %s - Updated At: %s\n" +
-                            "Status: %s\n",
-                    car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName() , car.getDesc(),
-                    car.getUnitPrice(), car.getStock(), car.getCreatedAt().format(CarDealer.formatter), (car.getUpdatedAt() != null ? car.getUpdatedAt().format(CarDealer.formatter) : "Not yet edited"), (car.isStatus()?"Active":"Hidden"));
+            System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
+            "Descriptions: %s\n" +
+            "Price: $%.2f - Quantity in stock: %d - Created At: %s - Updated At: %s\n" +
+            "Status: %s\n",
+            car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName() , car.getDesc(),
+            car.getUnitPrice(), car.getStock(), car.getCreatedAt().format(CarDealer.formatter), (car.getUpdatedAt() != null ? car.getUpdatedAt().format(CarDealer.formatter) : "Not yet edited"), (car.isStatus()?"Active":"Hidden"));
             System.out.println("----------------------------------------");
         }
     }
@@ -210,13 +209,35 @@ public class CarManager {
         }
         System.out.printf("----------Search result for '%s': ----------\n", inputName);
         for (Car car : list) {
-            System.out.printf("ID: %d - Car's name: %s - Catalog: %s\n" +
+            System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
                             "Descriptions: %s\n" +
                             "Price: %.2f - Quantity in stock: %d - Created At: %s - Updated At: %s\n" +
                             "Status: %s\n",
-                    car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName(), car.getDesc(),
-                    car.getUnitPrice(), car.getStock(), car.getCreatedAt().format(CarDealer.formatter), (car.getUpdatedAt() != null ? car.getCreatedAt().format(CarDealer.formatter) : "Not yet edited"), (car.isStatus()?"Active":"Hidden"));
+                    car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName() , car.getDesc(),
+                    car.getUnitPrice(), car.getStock(), car.getCreatedAt().format(CarDealer.formatter), (car.getUpdatedAt() != null ? car.getUpdatedAt().format(CarDealer.formatter) : "Not yet edited"), (car.isStatus()?"Active":"Hidden"));
             System.out.println("----------------------------------------");
         }
     }
 }
+
+//Car detail information
+//System.out.println("----------Car list----------");
+//        for (Car car : listCars) {
+//        System.out.printf("ID: %d - Car's name: %s - Catalog: %s\n" +
+//        "Descriptions: %s\n" +
+//        "Price: %.2f - Quantity in stock: %d - Created At: %s - Updated At: %s\n" +
+//        "Status: %s\n",
+//        car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName() , car.getDesc(),
+//        car.getUnitPrice(), car.getStock(), car.getCreatedAt().format(CarDealer.formatter), (car.getUpdatedAt() != null ? car.getUpdatedAt().format(CarDealer.formatter) : "Not yet edited"), (car.isStatus()?"Active":"Hidden"));
+//        System.out.println("----------------------------------------");
+//        }
+
+//Car information
+//System.out.println("----------Car list----------");
+//        for (Car car : listCars) {
+//        System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
+//        "Price: %.2f\n" +
+//        car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName(),
+//        car.getUnitPrice());
+//        System.out.println("----------------------------------------");
+//        }

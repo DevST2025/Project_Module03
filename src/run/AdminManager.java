@@ -4,7 +4,6 @@ import bussiness.util.InputMethods;
 
 public class AdminManager {
     public static void showAdminManager() {
-        System.out.println("\u001B[34m----------Admin manager----------");
         do {
             Menu.adminManager();
             System.out.print("\u001B[34mEnter your choice: ");
@@ -20,13 +19,16 @@ public class AdminManager {
                     CarManager.showCarManager();
                     break;
                 case 4:
+                    OrderManager.showOrderManager();
+                    break;
+                case 5:
                     CarDealer.loginAccount = null;
                     LoginRegisterManager.showLoginRegister();
                     break;
-                case 5:
+                case 6:
                     System.out.println("\u001B[36m----------End----------");
                     System.exit(0);
-                case 6:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
         } while (true);

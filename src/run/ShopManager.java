@@ -4,7 +4,6 @@ import bussiness.util.InputMethods;
 
 public class ShopManager {
     public static void showShop() {
-        System.out.println("\u001B[34m----------Car Dealer----------");
         do {
             Menu.shop();
             System.out.print("\u001B[34mEnter your choice: ");
@@ -17,13 +16,22 @@ public class ShopManager {
                     CartManager.showCart();
                     break;
                 case 3:
+                    ContactManager.showContact();
+                    break;
+                case 4:
+                    ProfileManager.showProfileManager();
+                    break;
+                case 5:
+                    OrderHistoryManager.showOrderHistoryManager();
+                    break;
+                case 6:
                     CarDealer.loginAccount = null;
                     LoginRegisterManager.showLoginRegister();
                     break;
-                case 4:
+                case 7:
                     System.out.println("\u001B[36m----------End----------");
                     System.exit(0);
-                case 5:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
         } while (true);

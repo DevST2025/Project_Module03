@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CatalogManager {
     public static void showCatalogManager() {
-        System.out.println("\u001B[34m----------Catalog manager----------");
         do {
             Menu.catalogManager();
             System.out.print("\u001B[34mEnter your choice: ");
@@ -33,7 +32,7 @@ public class CatalogManager {
                     break;
                 case 6:
                     break;
-                case 7:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
             if (choice == 6) {
@@ -41,13 +40,15 @@ public class CatalogManager {
             }
         } while (true);
     }
+
     //Show List Account
     public static void showListCatalog() {
         List<Catalog> listCatalogs = CarDealer.catalogService.findAll();
         System.out.println("----------Brand list----------");
         for (Catalog catalog : listCatalogs) {
             System.out.printf("ID: %d - Brand's name: %s\n" +
-                            "Descriptions: %s - Status: %s\n",
+                            "Descriptions: %s\n" +
+                            "Status: %s\n",
                     catalog.getCatalogId(), catalog.getCatalogName(), catalog.getDesc(), (catalog.isStatus() ? "Active" : "Hidden"));
             System.out.println("----------------------------------------");
         }

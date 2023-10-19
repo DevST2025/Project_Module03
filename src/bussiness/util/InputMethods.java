@@ -31,7 +31,7 @@ public class InputMethods {
      * getEmail()  Return email
      */
     public static String getEmail() {
-        boolean isExist = true;
+        boolean isExist;
         String result;
         while (true) {
             isExist = true;
@@ -40,6 +40,29 @@ public class InputMethods {
                 System.out.println("\u001B[33m" + EMPTY_ALERT);
                 isExist = false;
             } else if (!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", result)) {
+                System.out.println("\u001B[33m" + FORMAT_ALERT);
+                isExist = false;
+            }
+            if (isExist) {
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * getEmail()  Return email
+     */
+    public static String getPhoneNumber() {
+        boolean isExist;
+        String result;
+        while (true) {
+            isExist = true;
+            result = getInput();
+            if (result.trim().equals("")) {
+                System.out.println("\u001B[33m" + EMPTY_ALERT);
+                isExist = false;
+            } else if (!Pattern.matches("^([+]84|0[3|5|7|8|9])+([0-9]{8})$", result)) {
                 System.out.println("\u001B[33m" + FORMAT_ALERT);
                 isExist = false;
             }

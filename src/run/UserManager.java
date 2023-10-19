@@ -8,7 +8,6 @@ import java.util.List;
 
 public class UserManager {
     public static void showUserManager() {
-        System.out.println("\u001B[34m----------User manager----------");
         do {
             Menu.userManager();
             System.out.print("\u001B[34mEnter your choice: ");
@@ -25,7 +24,7 @@ public class UserManager {
                     break;
                 case 4:
                     break;
-                case 5:
+                default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
             if (choice == 4) {

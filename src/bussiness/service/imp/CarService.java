@@ -34,6 +34,11 @@ public class CarService implements ICarService {
     }
 
     @Override
+    public Car findByIdForUser(long id) {
+        return findAllForUser().stream().filter(car -> car.getCarId() == id).findFirst().orElse(null);
+    }
+
+    @Override
     public long getNewId() {
         return cars.stream().map(Car::getCarId).max(Comparator.naturalOrder()).orElse(0L) + 1;
     }
