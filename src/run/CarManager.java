@@ -1,11 +1,14 @@
 package run;
 
+import bussiness.config.IOFile;
 import bussiness.entity.Car;
 import bussiness.entity.Catalog;
+import bussiness.util.ConsoleColors;
 import bussiness.util.InputMethods;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CarManager {
     public static void showCarManager() {
@@ -27,14 +30,17 @@ public class CarManager {
                     hiddenCar();
                     break;
                 case 5:
-                    findCarByName();
+                    hiddenCars();
                     break;
                 case 6:
+                    findCarByName();
+                    break;
+                case 7:
                     break;
                 default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
-            if (choice == 6) {
+            if (choice == 7) {
                 break;
             }
         } while (true);
@@ -43,7 +49,7 @@ public class CarManager {
     public static void showListCar() {
         List<Car> listCars = CarDealer.carService.findAll();
         if (listCars.isEmpty()) {
-            System.out.println("There are no cars in the showroom.");
+            System.out.println(ConsoleColors.RED_ITALIC + "There are no cars in the showroom.");
             return;
         }
         System.out.println("----------Car list----------");
@@ -111,7 +117,7 @@ public class CarManager {
 
 
 
-    //Update catalog
+    //Update car
     public static void updateCar() {
         System.out.print("Enter car's id: ");
         long inputId = InputMethods.getLong();
@@ -173,7 +179,7 @@ public class CarManager {
 
     }
 
-    // Change status user
+    // Change status car
     public static void hiddenCar() {
         System.out.print("Enter car's id: ");
         long inputId = InputMethods.getLong();
@@ -193,8 +199,42 @@ public class CarManager {
             System.out.println("This car has been hidden.");
             return;
         }
+        //Update status
         car.setStatus(false);
+        //Update time
+        LocalDateTime newDate = LocalDateTime.now();
+        car.setUpdatedAt(newDate);
+        CarDealer.carService.save(car);
         System.out.printf("Car with ID %d has been hidden.\n", inputId);
+    }
+
+    // Change status cars
+    public static void hiddenCars() {
+        System.out.print("Enter list car's id: ");
+        String inputListId = InputMethods.getString();
+        if (Pattern.matches("\\d+(,\\d+)*", inputListId)) {
+            String[] listId = inputListId.split(",");
+            for (String id: listId) {
+                long inputId = Long.parseLong(id);
+                if (CarDealer.carService.findById(inputId) != null) {
+                    if (!CarDealer.carService.findById(inputId).isStatus()) {
+                        System.out.printf("This car with id %d has been hidden.\n", inputId);
+                        continue;
+                    }
+                    CarDealer.carService.findById(inputId).setStatus(false);
+                    //Update time
+                    LocalDateTime newDate = LocalDateTime.now();
+                    CarDealer.carService.findById(inputId).setUpdatedAt(newDate);
+                    System.out.printf("Car with ID %d has been hidden.\n", inputId);
+                }
+                else {
+                    System.out.printf("Car with ID %d is not exist.\n", inputId);
+                }
+            }
+        } else {
+            System.out.println("Invalid format, please re-enter.");
+        }
+        IOFile.writeToFile(IOFile.CAR_PATH, CarDealer.carService.findAll());
     }
 
     // Find User By Name

@@ -1,12 +1,8 @@
 package run;
 
 import bussiness.entity.Car;
-import bussiness.entity.CartItem;
-import bussiness.entity.Catalog;
 import bussiness.util.InputMethods;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.List;
@@ -39,7 +35,7 @@ public class HomePageManager {
                 default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
-            if (choice == 5) {
+            if (choice == 6) {
                 break;
             }
         } while (true);
@@ -59,7 +55,7 @@ public class HomePageManager {
         System.out.printf("----------Search result for '%s': ----------\n", inputName);
         for (Car car : list) {
             System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
-            "Price: %.2f\n" +
+            "Price: $%.2f\n",
             car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName(),
             car.getUnitPrice());
             System.out.println("----------------------------------------");
@@ -77,7 +73,7 @@ public class HomePageManager {
         System.out.printf("----------Featured car models in %s----------\n", month);
         for (Car car : list) {
             System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
-            "Price: %.2f\n" +
+            "Price: $%.2f\n",
             car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName(),
             car.getUnitPrice());
             System.out.println("----------------------------------------");
@@ -94,7 +90,7 @@ public class HomePageManager {
         System.out.println("----------THS's car list----------");
         for (Car car : list) {
             System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
-            "Price: %.2f\n" +
+            "Price: $%.2f\n",
             car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName(),
             car.getUnitPrice());
             System.out.println("----------------------------------------");
@@ -119,8 +115,8 @@ public class HomePageManager {
         }
         System.out.printf("----------%s----------\n", car.getCarName());
         System.out.printf("ID: %d - Car's name: %s - Brand: %s\n" +
-                        "Descriptions: %s\n" +
-                        "Price: %.2f - Quantity in stock: %d\n",
+                        "Descriptions: %s\n"+
+                        "Price: $%.2f - Quantity in stock: %d\n",
                 car.getCarId(), car.getCarName(), CarDealer.catalogService.findById(car.getCatalogId()).getCatalogName() , car.getDesc(),
                 car.getUnitPrice(), car.getStock());
         System.out.println("----------------------------------------");
@@ -148,7 +144,7 @@ public class HomePageManager {
                 }
             }
         }
-        System.out.print("Enter the quantity of cars you want to purchase: ");
+//        System.out.print("Enter the quantity of cars you want to purchase: ");
         int inputQuantity = getInputQuantity(inputId);
         CarDealer.cartService.addCarToListCart(inputId, inputQuantity);
     }
@@ -157,19 +153,39 @@ public class HomePageManager {
         char key;
         System.out.print("Enter the quantity of cars you want to purchase: ");
         int inputQuantity = InputMethods.getInteger();
-        if (inputQuantity + CarDealer.cartService.findById(inputId).getQuantity() > CarDealer.carService.findById(inputId).getStock()) {
-            System.out.print("The quantity of cars exceeds the available stock, do you want to deplete it?(Y/N)");
-            key = InputMethods.getChar();
-            if (key == 'Y') {
-                inputQuantity = CarDealer.carService.findById(inputId).getStock() - CarDealer.cartService.findById(inputId).getQuantity();
-            } else {
-                while (true) {
-                    System.out.print("Please re-enter the quantity of cars you want to purchase: ");
-                    inputQuantity = InputMethods.getInteger();
-                    if (inputQuantity + CarDealer.cartService.findById(inputId).getQuantity() <= CarDealer.carService.findById(inputId).getStock()) {
-                        break;
-                    } else {
-                        System.out.println("The quantity you want to purchase exceeds the stock quantity, please re-enter.");
+        if (CarDealer.cartService.findAll().isEmpty()) {
+            if (inputQuantity > CarDealer.carService.findById(inputId).getStock()) {
+                System.out.print("The quantity of cars exceeds the available stock, do you want to deplete it?(Y/N)");
+                key = InputMethods.getChar();
+                if (key == 'Y') {
+                    inputQuantity = CarDealer.carService.findById(inputId).getStock();
+                } else {
+                    while (true) {
+                        System.out.print("Please re-enter the quantity of cars you want to purchase: ");
+                        inputQuantity = InputMethods.getInteger();
+                        if (inputQuantity <= CarDealer.carService.findById(inputId).getStock()) {
+                            break;
+                        } else {
+                            System.out.println("The quantity you want to purchase exceeds the stock quantity, please re-enter.");
+                        }
+                    }
+                }
+            }
+        } else {
+            if (inputQuantity + CarDealer.cartService.findById(inputId).getQuantity() > CarDealer.carService.findById(inputId).getStock()) {
+                System.out.print("The quantity of cars exceeds the available stock, do you want to deplete it?(Y/N)");
+                key = InputMethods.getChar();
+                if (key == 'Y') {
+                    inputQuantity = CarDealer.carService.findById(inputId).getStock() - CarDealer.cartService.findById(inputId).getQuantity();
+                } else {
+                    while (true) {
+                        System.out.print("Please re-enter the quantity of cars you want to purchase: ");
+                        inputQuantity = InputMethods.getInteger();
+                        if (inputQuantity + CarDealer.cartService.findById(inputId).getQuantity() <= CarDealer.carService.findById(inputId).getStock()) {
+                            break;
+                        } else {
+                            System.out.println("The quantity you want to purchase exceeds the stock quantity, please re-enter.");
+                        }
                     }
                 }
             }

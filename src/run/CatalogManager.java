@@ -1,5 +1,6 @@
 package run;
 
+import bussiness.config.IOFile;
 import bussiness.entity.Catalog;
 import bussiness.entity.User;
 import bussiness.util.InputMethods;
@@ -7,6 +8,7 @@ import bussiness.util.InputMethods;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CatalogManager {
     public static void showCatalogManager() {
@@ -31,11 +33,14 @@ public class CatalogManager {
                     hiddenCatalog();
                     break;
                 case 6:
+                    hiddenCatalogs();
+                    break;
+                case 7:
                     break;
                 default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
-            if (choice == 6) {
+            if (choice == 7) {
                 break;
             }
         } while (true);
@@ -127,7 +132,7 @@ public class CatalogManager {
         System.out.printf("Brand with id %d update successfully.\n", inputId);
     }
 
-    // Change status user
+    // Change status catalog
     public static void hiddenCatalog() {
         System.out.print("Enter brand's id: ");
         long inputId = InputMethods.getLong();
@@ -149,5 +154,30 @@ public class CatalogManager {
         }
         catalog.setStatus(false);
         System.out.printf("Brand with ID %d has been hidden.\n", inputId);
+    }
+
+    // Change status catalogs
+    public static void hiddenCatalogs() {
+        System.out.print("Enter list brand's id: ");
+        String inputListId = InputMethods.getString();
+        if (Pattern.matches("\\d+(,\\d+)*", inputListId)) {
+            String[] listId = inputListId.split(",");
+            for (String id: listId) {
+                long inputId = Long.parseLong(id);
+                if (CarDealer.catalogService.findById(inputId) != null) {
+                    if (!CarDealer.catalogService.findById(inputId).isStatus()) {
+                        System.out.printf("This brand with id %d has been hidden.\n", inputId);
+                        continue;
+                    }
+                    CarDealer.catalogService.findById(inputId).setStatus(false);
+                    System.out.printf("Brand with ID %d has been changed to hidden.\n", inputId);
+                } else {
+                    System.out.printf("Brand with ID %d is not exist.\n", inputId);
+                }
+            }
+        } else {
+            System.out.println("Invalid format, please re-enter.");
+        }
+        IOFile.writeToFile(IOFile.CATALOG_PATH, CarDealer.catalogService.findAll());
     }
 }

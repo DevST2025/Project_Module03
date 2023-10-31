@@ -2,6 +2,7 @@ package run;
 
 import bussiness.entity.Car;
 import bussiness.entity.User;
+import bussiness.util.BCrypt;
 import bussiness.util.InputMethods;
 
 import java.time.LocalDateTime;
@@ -27,7 +28,7 @@ public class ProfileManager {
                 default:
                     System.out.println("\u001B[31mPlease select the options above.");
             }
-            if (choice == 6) {
+            if (choice == 4) {
                 break;
             }
         } while (true);
@@ -49,10 +50,11 @@ public class ProfileManager {
         System.out.print("Enter old password: ");
         String inputPass = InputMethods.getPassword();
 
-        if (inputPass == CarDealer.loginAccount.getPassword()) {
+        if (BCrypt.checkpw(inputPass, CarDealer.loginAccount.getPassword())) {
             System.out.print("Enter new password: ");
             String newPass = InputMethods.getPassword();
-            CarDealer.loginAccount.setPassword(newPass);
+            String hashedPassword = BCrypt.hashpw(newPass, BCrypt.gensalt());
+            CarDealer.loginAccount.setPassword(hashedPassword);
             CarDealer.userService.save(CarDealer.loginAccount);
         } else {
             System.out.println("Password does not match, please re-enter.");
@@ -63,7 +65,7 @@ public class ProfileManager {
     public static void updateAccInfor() {
         System.out.print("Enter old password: ");
         String inputPass = InputMethods.getPassword();
-        if (inputPass == CarDealer.loginAccount.getPassword()) {
+        if (BCrypt.checkpw(inputPass, CarDealer.loginAccount.getPassword())) {
             //Full Name
             System.out.print("\u001B[37mEnter Full Name: ");
             String fullName = InputMethods.getString();

@@ -154,31 +154,34 @@ public class OrderService implements IOrderService {
 
     //WAITING,CONFIRM,CANCEL,DELIVER,COMPLETE
 
-
     @Override
     public void display(List<Order> list) {
-        for (Order o: list) {
-            switch (o.getStatus()) {
-                case WAITING:
-                    System.out.println("List all unconfirmed orders");
-                    break;
-                case CONFIRM:
-                    System.out.println("List all confirmed orders");
-                    break;
-                case COMPLETE:
-                    System.out.println("List all completed orders");
-                    break;
-                case CANCEL:
-                    System.out.println("List all canceled orders");
-                    break;
-                default:
+        if (list.isEmpty())
+            System.out.println("No existing orders.");
+        else {
+            for (Order o: list) {
+                switch (o.getStatus()) {
+                    case WAITING:
+                        System.out.println("List all unconfirmed orders");
+                        break;
+                    case CONFIRM:
+                        System.out.println("List all confirmed orders");
+                        break;
+                    case COMPLETE:
+                        System.out.println("List all completed orders");
+                        break;
+                    case CANCEL:
+                        System.out.println("List all canceled orders");
+                        break;
+                    default:
+                }
+                System.out.printf("Order's ID: %d - User's ID: %d - Full name: %s\n" +
+                                "Phone number: %s - Address: %s - Total Amount: %.2f\n" +
+                                "Status: %s - Order At: %s - Deliver At: %s\n"
+                        ,o.getOrderId(), o.getUserId(), o.getFullName(), o.getPhoneNumber()
+                        ,o.getAddress(), o.getTotalAmount(), o.getStatus()
+                        ,o.getOrderAt().format(CarDealer.formatter), (o.getDeliverAt()!=null?o.getDeliverAt().format(CarDealer.formatter): "Delivery date not confirmed yet."));
             }
-            System.out.printf("Order's ID: %d - User's ID: %d - Full name: %s\n" +
-                    "Phone number: %s - Address: %s - Total Amount: %.2f\n" +
-                    "Status: %s - Order At: %s - Deliver At: %s\n"
-                    ,o.getOrderId(), o.getUserId(), o.getFullName(), o.getPhoneNumber()
-                    ,o.getAddress(), o.getTotalAmount(), o.getStatus()
-                    ,o.getOrderAt().format(CarDealer.formatter), (o.getDeliverAt()!=null?o.getDeliverAt().format(CarDealer.formatter): "Delivery date not confirmed yet."));
         }
     }
 }

@@ -4,13 +4,13 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class InputMethods {
-    private static final String ERROR_ALERT = "Invalid format, please re-enter.";
-    private static final String FORMAT_ALERT = "Invalid format, please re-enter";
-    public static final String EMPTY_ALERT = "Input field cannot be left empty, please re-enter";
-    public static final String ERROR_NUMBER = "===>> Vui lòng nhập số nguyên lớn hơn 0";
-    public static final String ERROR_SONGID = "===>> Id bài hát phải bắt đầu bằng kí tự S và có đúng 4 kí tự";
-    public static final String ERROR_PASSWORD = "Please enter 6 characters";
-    public static final String ERROR_CPASSWORD = "Please enter the same password as above";
+    private static final String ERROR_ALERT = ConsoleColors.RED_ITALIC + "Invalid format, please re-enter.";
+    private static final String FORMAT_ALERT = ConsoleColors.RED_ITALIC + "Invalid format, please re-enter";
+    public static final String EMPTY_ALERT = ConsoleColors.RED_ITALIC + "Input field cannot be left empty, please re-enter";
+    public static final String ERROR_NUMBER = ConsoleColors.RED_ITALIC + "===>> Vui lòng nhập số nguyên lớn hơn 0";
+    public static final String ERROR_SONGID = ConsoleColors.RED_ITALIC + "===>> Id bài hát phải bắt đầu bằng kí tự S và có đúng 4 kí tự";
+    public static final String ERROR_PASSWORD = ConsoleColors.RED_ITALIC + "Please enter at least 6 characters";
+    public static final String ERROR_CPASSWORD = ConsoleColors.RED_ITALIC + "Please enter the same password as above";
     /*========================================Input Method Start========================================*/
 
     /**
@@ -20,7 +20,8 @@ public class InputMethods {
         while (true) {
             String result = getInput();
             if (result.trim().equals("")) {
-                System.out.println("\u001B[33m" + EMPTY_ALERT);
+                System.out.println(EMPTY_ALERT);
+                System.out.println(ConsoleColors.RESET);
                 continue;
             }
             return result;
@@ -37,10 +38,12 @@ public class InputMethods {
             isExist = true;
             result = getInput();
             if (result.trim().equals("")) {
-                System.out.println("\u001B[33m" + EMPTY_ALERT);
+                System.out.println(EMPTY_ALERT);
+                System.out.println(ConsoleColors.RESET);
                 isExist = false;
             } else if (!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", result)) {
-                System.out.println("\u001B[33m" + FORMAT_ALERT);
+                System.out.println(FORMAT_ALERT);
+                System.out.println(ConsoleColors.RESET);
                 isExist = false;
             }
             if (isExist) {
@@ -60,10 +63,12 @@ public class InputMethods {
             isExist = true;
             result = getInput();
             if (result.trim().equals("")) {
-                System.out.println("\u001B[33m" + EMPTY_ALERT);
+                System.out.println(EMPTY_ALERT);
+                System.out.println(ConsoleColors.RESET);
                 isExist = false;
             } else if (!Pattern.matches("^([+]84|0[3|5|7|8|9])+([0-9]{8})$", result)) {
-                System.out.println("\u001B[33m" + FORMAT_ALERT);
+                System.out.println(FORMAT_ALERT);
+                System.out.println(ConsoleColors.RESET);
                 isExist = false;
             }
             if (isExist) {
@@ -97,7 +102,8 @@ public class InputMethods {
             try {
                 return Byte.parseByte(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -110,7 +116,8 @@ public class InputMethods {
             try {
                 return Short.parseShort(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -123,7 +130,8 @@ public class InputMethods {
             try {
                 return Integer.parseInt(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -136,7 +144,8 @@ public class InputMethods {
             try {
                 return Long.parseLong(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -149,7 +158,8 @@ public class InputMethods {
             try {
                 return Float.parseFloat(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -162,7 +172,8 @@ public class InputMethods {
             try {
                 return Double.parseDouble(getString());
             } catch (NumberFormatException errException) {
-                System.out.println("\u001B[33m" + ERROR_ALERT);
+                System.out.println(ERROR_ALERT);
+                System.out.println(ConsoleColors.RESET);
             }
         }
     }
@@ -189,7 +200,8 @@ public class InputMethods {
             if (result > 0) {
                 return result;
             }
-            System.out.println("\u001B[33m" + ERROR_NUMBER);
+            System.out.println(ERROR_NUMBER);
+            System.out.println(ConsoleColors.RESET);
         }
     }
     // kiểm tra id có đúng định dạng không
@@ -199,7 +211,8 @@ public class InputMethods {
             if(result.startsWith("S")&&result.length()==4){
                 return result;
             }
-            System.out.println("\u001B[33m" + ERROR_SONGID);
+            System.out.println(ERROR_SONGID);
+            System.out.println(ConsoleColors.RESET);
         }
     }
 
@@ -207,10 +220,11 @@ public class InputMethods {
     public static String getPassword(){
         while (true) {
             String result = getString();
-            if(result.length()==6){
+            if(result.length()>=6){
                 return result;
             }
-            System.out.println("\u001B[33m" + ERROR_PASSWORD);
+            System.out.println(ERROR_PASSWORD);
+            System.out.println(ConsoleColors.RESET);
         }
     }
     public static String checkConfirmPassword(String password){
@@ -219,7 +233,8 @@ public class InputMethods {
             if(result.equals(password)){
                 return result;
             }
-            System.out.println("\u001B[33m" + ERROR_CPASSWORD);
+            System.out.println(ERROR_CPASSWORD);
+            System.out.println(ConsoleColors.RESET);
         }
     }
 }

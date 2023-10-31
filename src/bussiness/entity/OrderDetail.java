@@ -1,8 +1,9 @@
 package bussiness.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class OrderDetail {
+public class OrderDetail implements Serializable {
     private long carId;
     private long orderId;
     private String carName;

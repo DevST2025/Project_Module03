@@ -41,7 +41,8 @@ public class CartManager {
 
     //Show car in cart
     public static void showCarInCart() {
-        List<CartItem> list = CarDealer.cartService.findAll();
+//        List<CartItem> list = CarDealer.cartService.findAll();
+        List<CartItem> list = CarDealer.loginAccount.getCart();
         System.out.printf("Your cart has %d %s\n", list.size(), (list.size() > 1?"items":"item"));
         CarDealer.cartService.display();
     }
@@ -62,6 +63,7 @@ public class CartManager {
                 }
             }
         }
+
         System.out.print("Enter the quantity of cars you want to change: ");
         int inputQuantity = InputMethods.getInteger();
         if (inputQuantity > CarDealer.carService.findById(inputId).getStock()) {
@@ -74,7 +76,8 @@ public class CartManager {
                     System.out.print("Please re-enter the quantity of cars you want to change: ");
                     inputQuantity = InputMethods.getInteger();
                     if (inputQuantity <= CarDealer.carService.findById(inputId).getStock()) {
-                        break;
+                        CarDealer.cartService.changeQuantity(inputId, inputQuantity);
+                        return;
                     } else {
                         System.out.println("The quantity you want to purchase exceeds the stock quantity, please re-enter.");
                     }
@@ -103,6 +106,10 @@ public class CartManager {
         CarDealer.cartService.delete(inputId);
     }
     public static void checkOut() {
+        if (CarDealer.loginAccount.getCart().isEmpty()) {
+            System.out.println("Cart is empty. Please select your favorite car from the showroom.");
+            return;
+        }
         System.out.print("Enter your phone number: ");
         String inputPhone = InputMethods.getPhoneNumber();
         System.out.print("Enter your address: ");
@@ -110,5 +117,6 @@ public class CartManager {
 
         CarDealer.cartService.checkOut(inputPhone, inputAddress);
         CarDealer.loginAccount.setCart(new ArrayList<>());
+        CarDealer.userService.save(CarDealer.loginAccount);
     }
 }

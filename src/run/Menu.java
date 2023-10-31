@@ -1,116 +1,330 @@
 package run;
 
+import bussiness.util.ConsoleColors;
+
 public class Menu {
     public static void logRegister() {
-        System.out.println("\u001B[35m----------Welcome to THS Car Dealer----------");
-        System.out.println("\u001B[37m1. Login");
-        System.out.println("\u001B[37m2. Register");
-        System.out.println("\u001B[37m3. Quit");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Welcome to THS Car Dealer          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Login");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Register");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Quit");
+        System.out.println();
     }
 
     //For Admin
     public static void adminManager() {
-        System.out.println("\u001B[35m----------Admin Management----------");
-        System.out.println("\u001B[37m1. User Manager");
-        System.out.println("\u001B[37m2. Brand Manager");
-        System.out.println("\u001B[37m3. Car Manager");
-        System.out.println("\u001B[37m4. Order Manager");
-        System.out.println("\u001B[37m5. Log out");
-        System.out.println("\u001B[37m6. Quit");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Admin Management          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  User Manager");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Brand Manager");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Car Manager");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Order Manager");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Log out");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Quit");
+        System.out.println();
     }
     //User Manager
     public static void userManager() {
-        System.out.println("\u001B[35m----------User Management----------");
-        System.out.println("\u001B[37m1. Show list account");
-        System.out.println("\u001B[37m2. Find account with user name");
-        System.out.println("\u001B[37m3. Block/Unblock user account");
-        System.out.println("\u001B[37m4. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          User Management          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list account");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Find account with user name");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Block/Unblock user account");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
     //Catalog Manager
     public static void catalogManager() {
-        System.out.println("\u001B[35m----------Brand Management----------");
-        System.out.println("\u001B[37m1. Show list brands");
-        System.out.println("\u001B[37m2. Add new brand");
-        System.out.println("\u001B[37m3. Find brand with brand's name");
-        System.out.println("\u001B[37m4. Update brand's information");
-        System.out.println("\u001B[37m5. Hidden brand with brand's id");
-        System.out.println("\u001B[37m6. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Brand Management          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list brands");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Add new brand");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Find brand with brand's name");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Update brand's information");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Hidden brand with brand's id");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Hidden list brands with brand's id");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 7 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
     //Car Manager
     public static void carManager() {
-        System.out.println("\u001B[35m----------Car Management----------");
-        System.out.println("\u001B[37m1. Show list cars");
-        System.out.println("\u001B[37m2. Add new car");
-        System.out.println("\u001B[37m3. Update car's information");
-        System.out.println("\u001B[37m4. Hidden car with car's id");
-        System.out.println("\u001B[37m5. Find car with car's name");
-        System.out.println("\u001B[37m6. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Car Management          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list cars");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Add new car");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Update car's information");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Hidden car with car's id");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Hidden list cars with car's id");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Find car with car's name");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 7 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 
     //Order Manager
     public static void orderManager() {
-        //WAITING,CONFIRM,CANCEL,DELIVER,COMPLETE
-        System.out.println("\u001B[35m----------Order Management----------");
-        System.out.println("\u001B[37m1. Show list all unconfirmed orders");
-        System.out.println("\u001B[37m2. Show list all confirmed orders");
-        System.out.println("\u001B[37m3. Show list all orders that have been delivered");
-        System.out.println("\u001B[37m4. Show list all returned orders");
-        System.out.println("\u001B[37m5. Confirm pending order");
-        System.out.println("\u001B[37m6. Cancel order");
-        System.out.println("\u001B[37m7. Update order's status");
-        System.out.println("\u001B[37m8. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Order Management          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all unconfirmed orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all confirmed orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all orders that have been delivered");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all returned orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Confirm pending order");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Cancel order");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 7 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Update order's status");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 8 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 
     // For User
     public static void shop() {
-        System.out.println("\u001B[35m----------THS's Showroom----------");
-        System.out.println("\u001B[37m1. Homepage");
-        System.out.println("\u001B[37m2. Cart");
-        System.out.println("\u001B[37m3. Contact Us");
-        System.out.println("\u001B[37m4. Profile");
-        System.out.println("\u001B[37m5. Order history");
-        System.out.println("\u001B[37m6. Log out");
-        System.out.println("\u001B[37m7. Quit");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          THS's Showroom          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Homepage");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Cart");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Contact Us");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Profile");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Order history");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Log out");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 7 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Quit");
+        System.out.println();
     }
 
     //Car Manager
     public static void homePage() {
-        System.out.println("\u001B[35m----------Home Page----------");
-        System.out.println("\u001B[37m1. Search your favorite car");
-        System.out.println("\u001B[37m2. Show best selling car");
-        System.out.println("\u001B[37m3. Show all car in showroom");
-        System.out.println("\u001B[37m4. Car Detail");
-        System.out.println("\u001B[37m5. Add car to your cart");
-        System.out.println("\u001B[37m6. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Home Page          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Search your favorite car");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show best selling car");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show all car in showroom");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Car Detail");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Add car to your cart");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 
     //Car Manager
     public static void cart() {
-        System.out.println("\u001B[35m----------Your cart----------");
-        System.out.println("\u001B[37m1. Show cart");
-        System.out.println("\u001B[37m2. Update order's quantity");
-        System.out.println("\u001B[37m3. Delete car into cart");
-        System.out.println("\u001B[37m4. Checkout");
-        System.out.println("\u001B[37m5. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Your cart          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show cart");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Update order's quantity");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Delete car into cart");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Checkout");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 
     //Profile Manager
     public static void profile() {
-        System.out.println("\u001B[35m----------Your profile----------");
-        System.out.println("\u001B[37m1. View account information");
-        System.out.println("\u001B[37m2. Change password");
-        System.out.println("\u001B[37m3. Update account information");
-        System.out.println("\u001B[37m4. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Your profile          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  View account information");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Change password");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Update account information");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 
     //Order history
     public static void orderHistory() {
-        System.out.println("\u001B[35m----------Your order history----------");
-        System.out.println("\u001B[37m1. Show list all unconfirmed orders");
-        System.out.println("\u001B[37m2. Show list all confirmed orders");
-        System.out.println("\u001B[37m3. Show list all orders that have been delivered");
-        System.out.println("\u001B[37m4. Show list all returned orders");
-        System.out.println("\u001B[37m5. Cancel order");
-        System.out.println("\u001B[37m6. Back");
+        System.out.println(ConsoleColors.BOXING);
+        System.out.println("\033[38;2;225;153;0m          Your order history          ");
+        System.out.println(ConsoleColors.RESET);
+        System.out.print(ConsoleColors.BOXING + " 1 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all unconfirmed orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 2 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all confirmed orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 3 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all orders that have been delivered");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 4 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Show list all returned orders");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 5 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Cancel order");
+        System.out.println();
+        System.out.print(ConsoleColors.BOXING + " 6 ");
+        System.out.print(ConsoleColors.RESET);
+        System.out.println("  Back");
+        System.out.println();
     }
 }

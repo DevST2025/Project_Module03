@@ -3,6 +3,7 @@ package bussiness.service.imp;
 import bussiness.config.IOFile;
 import bussiness.entity.User;
 import bussiness.service.IUserService;
+import bussiness.util.BCrypt;
 
 import java.util.Comparator;
 import java.util.List;
@@ -59,7 +60,8 @@ public class UserService implements IUserService {
     @Override
     public User login(String username, String password) {
         return users.stream()
-                .filter(user -> (user.getUsername().equals(username) || user.getEmail().equals(username)) && user.getPassword().equals(password))
+//                .filter(user -> (user.getUsername().equals(username) || user.getEmail().equals(username)) && user.getPassword().equals(password))
+                .filter(user -> (user.getUsername().equals(username) || user.getEmail().equals(username)) && BCrypt.checkpw(password, user.getPassword()))
                 .findFirst().orElse(null);
     }
 }
